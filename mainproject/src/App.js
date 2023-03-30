@@ -3,7 +3,6 @@ import FormButtons from './MainProject/FormFields/FormButtons'
 import { useState } from 'react'
 
 function App() {
-    // eslint-disable-next-line no-unused-vars
     let [numero, setNumero] = useState(100)
 
     const handleButtonClick = () => {
