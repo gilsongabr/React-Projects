@@ -1,9 +1,9 @@
 import FormFields from './MainProject/FormFields/FormFields'
 import FormButtons from './MainProject/FormFields/FormButtons'
 import { useState } from 'react'
+import Header from "./MainProject/Header/Header";
 
 function App() {
-    // eslint-disable-next-line no-unused-vars
     let [numero, setNumero] = useState(100)
 
     const handleButtonClick = () => {
@@ -11,6 +11,7 @@ function App() {
     }
 
     return <div>
+        <Header/>
         <FormFields
             fieldId={'nome'}
             fieldName={'Nome'}
