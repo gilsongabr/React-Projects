@@ -1,6 +1,7 @@
 import FormFields from './MainProject/FormFields/FormFields'
 import FormButtons from './MainProject/FormFields/FormButtons'
 import { useState } from 'react'
+import Header from "./MainProject/Header/Header";
 
 function App() {
     let [numero, setNumero] = useState(100)
@@ -10,6 +11,7 @@ function App() {
     }
 
     return <div>
+        <Header/>
         <FormFields
             fieldId={'nome'}
             fieldName={'Nome'}
