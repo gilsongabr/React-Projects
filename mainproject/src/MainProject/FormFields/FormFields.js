@@ -2,13 +2,22 @@ import './FormFields.css'
 // import { fieldTypeIsNumber, fieldDisabled, teste} from "./helper"
 // import Form from 'react-bootstrap/Form'
 import React from 'react'
-import Home from "../../CRUD/Home";
 
 // type=
 
 class FormFields extends React.Component{
-    constructor(props) {
-        super(props)
+    constructor(props, record, minhaFuncao) {
+        super(props, record, minhaFuncao)
+        this.field = {
+            addName: function (nameField) {
+                this.record = { "nome": nameField }
+                return this
+            },
+            addNumber: function (numberField) {
+                this.record = { "number": numberField }
+                return this
+            }
+        }
     }
     render(prototype) {
         if (prototype) {
@@ -33,5 +42,8 @@ function FormFields(props) {
         </div>
     </div>
 }
+        this.record: {
+
+        }
 */
 export default FormFields
