@@ -8,6 +8,10 @@ import React from 'react'
 class FormFields extends React.Component{
     constructor(props, record, minhaFuncao) {
         super(props, record, minhaFuncao)
+        this.record = {
+            nome: ''
+        }
+        /*
         this.field = {
             addName: function (nameField) {
                 this.record = { "nome": nameField }
@@ -17,6 +21,19 @@ class FormFields extends React.Component{
                 this.record = { "number": numberField }
                 return this
             }
+        }
+        */
+        this.field = (id, nome) => {
+            const objId = '{' + id + ':' + '{}' + '}'
+            console.log(objId)
+            const obj = JSON.parse(objId)
+            console.log(obj)
+            console.log(this.record)
+            this.record = {
+                ...this.record,
+                id: `${id}`
+            }
+            return this
         }
     }
     render(prototype) {
