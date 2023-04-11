@@ -8,59 +8,33 @@ import React from 'react'
 class FormFields extends React.Component{
     constructor(props, record, minhaFuncao) {
         super(props, record, minhaFuncao)
-        this.record = {
-            nome: ''
-        }
-        /*
-        this.field = {
-            addName: function (nameField) {
-                this.record = { "nome": nameField }
-                return this
-            },
-            addNumber: function (numberField) {
-                this.record = { "number": numberField }
-                return this
+        this.record = []
+
+        this.field = (nome = 'teste', label = '', id = undefined) => {
+            const field = {
+                id: id,
+                nome: nome,
+                label: label,
+                fieldWidth: 48,
             }
-        }
-        */
-        this.field = (id, nome) => {
-            const objId = '{' + id + ':' + '{}' + '}'
-            console.log(objId)
-            const obj = JSON.parse(objId)
-            console.log(obj)
-            console.log(this.record)
-            this.record = {
-                ...this.record,
-                id: `${id}`
-            }
+            this.record.push(field)
             return this
         }
     }
     render(prototype) {
         if (prototype) {
-            return <div>
+            return <div className="Form">
                 { Object.keys(prototype).map((item, key) => {
-                    return <div key={key}> { prototype[item] } </div>
-                }) }
+                    return <div key={key} className="FormField" style={{width: prototype[item].fieldWidth ? prototype[item].fieldWidth.toString() + '%' : "10%"}}>
+                        { prototype[item].label }
+                        <div className="FormInput">
+                            <input className="inputClass"
+                            />
+                        </div>
+                    </div>
+                })}
             </div>
         }
     }
 }
-
-/*
-function FormFields(props) {
-    return <div className="FormLabel" style={{width: props.fieldWidth ? props.fieldWidth.toString() + '%' : "10%"}}>
-        {props.fieldName ? props.fieldName : ''}
-        <div className="FormField">
-            <input className="input-group"
-                   disabled={props.fieldType === 'disabled'  || props.fieldId === 'id'}
-                   type={props.fieldType}
-            />
-        </div>
-    </div>
-}
-        this.record: {
-
-        }
-*/
 export default FormFields
