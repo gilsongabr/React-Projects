@@ -9,15 +9,21 @@ class FormFields extends React.Component{
     constructor(props, record, minhaFuncao) {
         super(props, record, minhaFuncao)
         this.record = []
+        this.form = {}
 
         this.field = (nome = 'teste', label = '', id = undefined) => {
             const field = {
                 id: id,
                 nome: nome,
                 label: label,
-                fieldWidth: 48,
+                fieldWidth: 10,
             }
-            this.record.push(field)
+            this.form = field
+            this.record.push(this.form)
+            return this
+        }
+        this.fieldFormWidth = (width) => {
+            this.form.fieldWidth = width
             return this
         }
     }
@@ -25,11 +31,10 @@ class FormFields extends React.Component{
         if (prototype) {
             return <div className="Form">
                 { Object.keys(prototype).map((item, key) => {
-                    return <div key={key} className="FormField" style={{width: prototype[item].fieldWidth ? prototype[item].fieldWidth.toString() + '%' : "10%"}}>
+                    return <div key={key} className="FormField" style={{width: prototype[item].fieldWidth ? 'calc(' + prototype[item].fieldWidth.toString() + '% - 10px)' : "calc(10% -10px)"}}>
                         { prototype[item].label }
                         <div className="FormInput">
-                            <input className="inputClass"
-                            />
+                            <input className="inputClass" />
                         </div>
                     </div>
                 })}
@@ -38,3 +43,9 @@ class FormFields extends React.Component{
     }
 }
 export default FormFields
+
+/*
+                        <div className="input-group mb-3">
+                            <input type="text" className="form-control" aria-labelledby="Default" />
+                        </div>
+ */
