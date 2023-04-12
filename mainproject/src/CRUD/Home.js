@@ -4,7 +4,10 @@ export default class Home extends FormFields{
     constructor(props) {
         super(props)
         this.field('nome', 'Nome')
+            .fieldFormWidth(50)
+
         this.field('teste', 'Aleluia')
+            .fieldFormWidth(55)
     }
 
     render() {

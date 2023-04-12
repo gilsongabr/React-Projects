@@ -1,22 +1,23 @@
 .Form{
     display: flex;
     flex-wrap: wrap;
+    align-content: flex-start;
     height: 80vh;
     border: 1px solid black;
     margin: 10px 10px 0 10px;
 }
 
 .FormInput {
-    padding: 0;
-    margin: 0;
+    margin-right: 10px;
 }
 
 .FormField {
-    margin: 10px 10px 0 10px;
+    margin: 10px 5px 0 5px;
 }
 .inputClass {
     width: 100%;
-    border-radius: 1px 0 3px 4px
+    border-radius: 1px 0 3px 4px;
+    display: flex !important;
 }
 
 input::-webkit-outer-spin-button,
