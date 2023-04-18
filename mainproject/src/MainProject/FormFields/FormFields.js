@@ -28,11 +28,11 @@ class FormFields extends React.Component{
             this.record.push(this.form)
             return this
         }
-        this.fieldFormWidth = (width) => {
+        this.fieldWidth = (width) => {
             this.form.fieldWidth = width
             return this
         }
-        this.fieldFormDisable = (disable?: true | false | undefined) => {
+        this.fieldDisable = (disable?: true | false | undefined) => {
             if (disable === false) {
                 this.form.fieldFormDisable = false
                 return this
