@@ -7,7 +7,9 @@ export default class Home extends FormFields{
             .fieldFormWidth(50)
 
         this.field('teste', 'Aleluia')
-            .fieldFormWidth(55)
+            .fieldFormWidth(50)
+            .fieldFormDisable(false)
+            .fieldIsNumber()
     }
 
     render() {
