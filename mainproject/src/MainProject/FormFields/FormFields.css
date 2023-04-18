@@ -16,8 +16,9 @@
 }
 .inputClass {
     width: 100%;
-    border-radius: 1px 0 3px 4px;
+    border-radius: 0.2rem;
     display: flex !important;
+    height: 20px;
 }
 
 input::-webkit-outer-spin-button,
