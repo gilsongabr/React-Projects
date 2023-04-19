@@ -22,7 +22,9 @@ class FormFields extends React.Component{
                 label: label,
                 fieldWidth: 10,
                 fieldFormDisable: false,
-                fieldIsNumber: false
+                fieldType: 'text',
+                fieldIsSelect: false,
+                fieldSelectOptions: []
             }
             this.form = field
             this.record.push(this.form)
@@ -41,11 +43,22 @@ class FormFields extends React.Component{
             return this
         }
         this.fieldIsNumber = (isNumber?: true | false | undefined) => {
-            if (isNumber === false) {
-                this.form.fieldIsNumber = false
+            if (isNumber === false)
                 return this
-            }
-            this.form.fieldIsNumber = true
+            this.form.fieldType = 'number'
+            return this
+        }
+        this.fieldIsDate = (isDate?: true | false | undefined) => {
+            if (isDate === false)
+                return this
+            this.form.fieldType = 'date'
+            return this
+        }
+        this.fieldIsSelect = (options?: []) => {
+            // if (options === false)
+            //     return this
+            this.form.fieldIsSelect = true
+            this.form.fieldSelectOptions = options
             return this
         }
     }
@@ -57,17 +70,25 @@ class FormFields extends React.Component{
         if (prototype) {
             return <Form className="Form">
                 { Object.keys(prototype).map((item, key) => {
+                    const isSelect = prototype[item].fieldIsSelect
                     return <Form.Group key={key} className="FormField" style={{width: prototype[item].fieldWidth ? 'calc(' + prototype[item].fieldWidth.toString() + '% - 10px)' : "calc(10% -10px)"}} size='lg'>
                         <Form.Label htmlFor="textInput">{prototype[item].label}</Form.Label>
                         <div className="FormInput" >
-                            <Form.Control
-                                className="inputClass"
-                                type={prototype[item].fieldIsNumber ? 'number' :'text'}
-                                value={this.state.value}
-                                id="textInput"
-                                disabled={prototype[item].fieldFormDisable}
-                                onChange={this.handleChange}
-                            />
+                            {isSelect
+                                ? <Form.Select aria-label="Default select example">
+                                    { Object.keys(prototype[item].fieldSelectOptions).map((option, key) => {
+                                        return <option key={key} value={prototype[item].fieldSelectOptions[option].value}>{prototype[item].fieldSelectOptions[option].label}</option>
+                                    })}
+                                    </Form.Select>
+                                : <Form.Control
+                                    className="inputClass"
+                                    type={prototype[item].fieldType}
+                                    value={this.state.value}
+                                    id="textInput"
+                                    disabled={prototype[item].fieldFormDisable}
+                                    onChange={this.handleChange}
+                                />
+                            }
                         </div>
                     </Form.Group>
                 })}
