@@ -1,6 +1,7 @@
 import './FormFields.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Form from 'react-bootstrap/Form'
+import { Button } from "react-bootstrap"
 import React from 'react'
 
 
@@ -55,8 +56,6 @@ class FormFields extends React.Component{
             return this
         }
         this.fieldIsSelect = (options?: []) => {
-            // if (options === false)
-            //     return this
             this.form.fieldIsSelect = true
             this.form.fieldSelectOptions = options
             return this
@@ -70,7 +69,7 @@ class FormFields extends React.Component{
     }
     render(prototype) {
         if (prototype) {
-            return <Form className="Form">
+            return <div><Form className="Form">
                 { Object.keys(prototype).map((item, key) => {
                     const isSelect = prototype[item].fieldIsSelect
                     return <Form.Group key={key} className="FormField" style={{width: prototype[item].fieldWidth ? 'calc(' + prototype[item].fieldWidth.toString() + '% - 10px)' : "calc(10% -10px)"}} size='lg'>
@@ -95,6 +94,11 @@ class FormFields extends React.Component{
                     </Form.Group>
                 })}
             </Form>
+                <div className="inputButton">
+                    <Button variant="outline-primary">INCLUIR</Button>
+                    <Button variant="outline-secondary" className="closeButton">SAIR</Button>
+                </div>
+            </div>
         }
     }
 }
