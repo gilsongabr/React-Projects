@@ -1,9 +1,8 @@
 import './FormFields.css'
-// import { fieldTypeIsNumber, fieldDisabled, teste} from "./helper"
+import 'bootstrap/dist/css/bootstrap.min.css'
 import Form from 'react-bootstrap/Form'
 import React from 'react'
 
-// type=
 
 class FormFields extends React.Component{
     constructor(props, record) {
@@ -24,7 +23,8 @@ class FormFields extends React.Component{
                 fieldFormDisable: false,
                 fieldType: 'text',
                 fieldIsSelect: false,
-                fieldSelectOptions: []
+                fieldSelectOptions: [],
+                value: undefined
             }
             this.form = field
             this.record.push(this.form)
@@ -64,6 +64,8 @@ class FormFields extends React.Component{
     }
 
     handleChange(e) {
+        const indexRecord = Object.keys(this.record).findIndex((item) => { return this.record[item].nome === e.target.id })
+        this.record[indexRecord].value = e.target.value
         this.setState({ value: e.target.value })
     }
     render(prototype) {
@@ -73,7 +75,7 @@ class FormFields extends React.Component{
                     const isSelect = prototype[item].fieldIsSelect
                     return <Form.Group key={key} className="FormField" style={{width: prototype[item].fieldWidth ? 'calc(' + prototype[item].fieldWidth.toString() + '% - 10px)' : "calc(10% -10px)"}} size='lg'>
                         <Form.Label htmlFor="textInput">{prototype[item].label}</Form.Label>
-                        <div className="FormInput" >
+                        <div className="FormInput mb-3" >
                             {isSelect
                                 ? <Form.Select aria-label="Default select example">
                                     { Object.keys(prototype[item].fieldSelectOptions).map((option, key) => {
@@ -81,10 +83,10 @@ class FormFields extends React.Component{
                                     })}
                                     </Form.Select>
                                 : <Form.Control
-                                    className="inputClass"
+                                    className="text-uppercase form-control"
                                     type={prototype[item].fieldType}
-                                    value={this.state.value}
-                                    id="textInput"
+                                    // value={this.state.value}
+                                    id={prototype[item].nome}
                                     disabled={prototype[item].fieldFormDisable}
                                     onChange={this.handleChange}
                                 />
