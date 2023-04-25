@@ -1,9 +1,10 @@
 import './App.css'
-import Home from './CRUD/Home'
+// import Home from './CRUD/Home'
+import TableFields from './MainProject/TableField/TableFields'
 
 function App() {
     return <div>
-        <Home />
+        <TableFields />
     </div>
 }
 

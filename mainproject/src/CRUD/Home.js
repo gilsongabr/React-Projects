@@ -6,7 +6,7 @@ export default class Home extends FormFields{
         this.field('nome', 'Nome')
             .fieldWidth(50)
 
-        this.field('teste', 'Aleluia')
+        this.field('cpf', 'CPF')
             .fieldWidth(50)
             .fieldDisable(false)
             .fieldIsNumber()

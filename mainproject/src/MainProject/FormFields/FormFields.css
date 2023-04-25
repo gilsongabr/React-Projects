@@ -21,6 +21,19 @@
     height: 20px;
 }
 
+.inputButton {
+    flex-wrap: wrap;
+    align-content: flex-start;
+    display: flex;
+    border: 1px solid black;
+    margin: 10px 10px 0 10px;
+}
+.closeButton {
+    position: absolute;
+    right: 0;
+    margin-right: 10px;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
